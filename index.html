@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAS</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+        src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous">
+    </script>
+
+     <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+            <div class="nav-title">
+                D A S
+            </div>
+        </div>
+        <div class="nav-btn">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="dashboards/admin.html">Dashboard</a>
+            <a href="#" target="_blank">Class</a>
+            <a href="#" target="_blank">Attendance</a>
+            <a href="#" target="_blank">Help Center</a>
+            <a href="#" target="_blank">Settings</a>
+            <a href="#" target="_blank">Reports</a>
+            <a href="#" target="_blank">Log Out</a>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div class="container">
+    <div class="top-bar">
+      <h2>Select Class Level:</h2>
+      <select>
+        <option value="all">All Classes</option>
+        <option value="std1">Standard 1</option>
+        <option value="std2">Standard 2</option>
+        <option value="std3">Standard 3</option>
+        <option value="std4">Standard 4</option>
+        <option value="std5">Standard 5</option>
+        <option value="std6">Standard 6</option>
+        <option value="std7">Standard 7</option>
+      </select>
+
+      <select>
+            <option value="all">All Streams</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+        </select>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <i class="fas fa-users blue"></i>
+        <div class="card-text">
+          <h3>Total Enrolled Students</h3>
+          <p>350</p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fas fa-user-check green"></i>
+        <div class="card-text">
+          <h3>Present Today</h3>
+          <p>330</p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fas fa-user-times red"></i>
+        <div class="card-text">
+          <h3>Absent Today</h3>
+          <p>20</p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fas fa-clock orange"></i>
+        <div class="card-text">
+          <h3>Late Arrivals</h3>
+          <p>5</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Attendance Summary (Last 7 Days)</h2>
+      <canvas id="attendanceChart" height="100"></canvas>
+    </div>
+
+    <div class="recent-attendance">
+      <h2>Recent Attendance Records</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Class</th>
+            <th>Stream</th>
+            <th>Status</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anna Kim</td>
+            <td>Standard 1</td>
+            <td>A</td>
+            <td>Present</td>
+            <td>F</td>
+          </tr>
+          <tr>
+            <td>Michael John</td>
+            <td>Standard 2</td>
+            <td>A</td>
+            <td>Late</td>
+            <td>F</td>
+          </tr>
+          <tr>
+            <td>Grace Mussa</td>
+            <td>Standard 3</td>
+            <td>A</td>
+            <td>Absent</td>
+            <td>M</td>
+          </tr>
+          <tr>
+            <td>James Banda</td>
+            <td>Standard 4</td>
+            <td>A</td>
+            <td>Present</td>
+            <td>F</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+    <footer>
+        <div class="footer">
+            <!-- <div class="heading">
+              <h2>D A S<sup></sup></h2>
+            </div> -->
+            <!-- <div class="content">
+             
+              <div class="social-media">
+                <h4>Social</h4>
+                <p>
+                  <a href="#"
+                    ><i class="fab fa-github"></i> Github</a
+                  >
+                </p>
+                <p>
+                  <a href="#"
+                    ><i class="fab fa-facebook"></i> Facebook</a
+                  >
+                </p>
+                <p>
+                  <a href="#"
+                    ><i class="fab fa-instagram"></i> Instagram</a
+                  >
+                </p>
+              </div>
+              <div class="links">
+                <h4>Quick links</h4>
+                <p><a href="dashboards/admin.html">Dashboard</a></p>
+                <p><a href="#">About</a></p>
+                <p><a href="#">Reports</a></p>
+                <p><a href="#">Log Out
+                </a></p>
+              </div>
+              <div class="details">
+                <h4 class="address">Address</h4>
+            
+                <h4 class="mobile">Mobile</h4>
+                <p><a href="#">+255</a></p>
+                <h4 class="mail">Email</h4>
+                <p><a href="#">bcskampala@gmail.com</a></p>
+              </div>
+            </div> -->
+            <!-- <footer> -->
+              <h3>
+                <i>v-0.1</i>
+                © BCS-GROUP 2 Tech Ltd
+              </h3>
+    </footer>
+
+    <!-- Chart JS Script -->
+  <script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+          {
+            label: 'Present',
+            backgroundColor: '#2ecc71',
+            data: [300, 320, 330, 310, 340, 0, 0]
+          },
+          {
+            label: 'Absent',
+            backgroundColor: '#e74c3c',
+            data: [50, 30, 20, 40, 10, 0, 0]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+    
+</body>
+</html>
