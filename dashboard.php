@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: index.php?error=Please login to access the dashboard");
+    header("Location: login.php");
+    $_SESSION['error'] = "You must log in first.";
     exit();
 }
 

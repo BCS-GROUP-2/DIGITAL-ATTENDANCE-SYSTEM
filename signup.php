@@ -1,3 +1,7 @@
+<?php
+include('backend/signup_logic.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,37 +21,37 @@
             <h2>SIGNUP</h2>
             <br>
 
-             <form action="backend/signup.php" method="POST">
+             <form action="" method="POST">
                 <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Enter Name" required>
-                    <br>
+                    <input type="text" id="name" name="name" placeholder="Enter Name" value="<?php echo htmlspecialchars($name); ?>">
                     <span class="error" id="nameError">
-                        <?php if (isset($nameErr)) echo $nameErr; ?>
+                        <?php if (!empty($nameErr)) echo '<div class="error">'.$nameErr.'</div>'; ?>
                     </span>
                 </div>
 
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
-                    <br>
+                    <input type="email" id="email" name="email" placeholder="Enter Email" value="<?php echo htmlspecialchars($email); ?>">
                     <span class="error" id="emailError">
-                        <?php if (isset($emailErr)) echo $emailErr; ?>
+                        <?php if (!empty($emailErr)) echo '<div class="error">'.$emailErr.'</div>'; ?>
                     </span>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="username" name="username" placeholder="Enter username" required>
-                    <br>
+                    <input type="text" id="username" name="username" placeholder="Enter username" value="<?php echo htmlspecialchars($username); ?>">
                     <span class="error" id="usernameError">
-                        <?php if (isset($usernameErr)) echo $usernameErr; ?>
+                        <?php if (!empty($usernameErr)) echo '<div class="error">'.$usernameErr.'</div>'; ?>
                     </span>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    <br>
+                    <input type="password" id="password" name="password" placeholder="Enter password">
                     <span class="error" id="passwordError">
-                        <?php if (isset($passwordErr)) echo $passwordErr; ?>
+                        <?php if (!empty($passwordErr)) echo '<div class="error">'.$passwordErr.'</div>'; ?>
                     </span>
+                </div>
+
+                <div class="not_have_account">
+                    <p>Already have an account? <a href="login.php">Log in</a></p>
                 </div>
 
                 <div class="form-actions">
