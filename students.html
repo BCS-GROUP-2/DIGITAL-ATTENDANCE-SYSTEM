@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - Students</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Student Management</h1>
+            <p class="subtitle">Manage student records and information</p>
+        </header>
+        
+        <div class="student-list">
+            <div class="student-card">
+                <div class="student-info">
+                    <h3>Alice Johnson</h3>
+                    <p class="class-info">12A</p>
+                    <p>Email: alice@example.com</p>
+                    <p>Roll: 2024001</p>
+                </div>
+                <div class="student-actions">
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-delete">Delete</button>
+                </div>
+            </div>
+            
+            <div class="student-card">
+                <div class="student-info">
+                    <h3>Bob Smith</h3>
+                    <p class="class-info">12A</p>
+                    <p>Email: bob@example.com</p>
+                    <p>Roll: 2024002</p>
+                </div>
+                <div class="student-actions">
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-delete">Delete</button>
+                </div>
+            </div>
+            
+            <div class="student-card">
+                <div class="student-info">
+                    <h3>Carol Williams</h3>
+                    <p class="class-info">12B</p>
+                    <p>Email: carol@example.com</p>
+                    <p>Roll: 2024003</p>
+                </div>
+                <div class="student-actions">
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-delete">Delete</button>
+                </div>
+            </div>
+            
+            <button class="btn-add-student" onclick="showAddStudentModal()">Add Student</button>
+        </div>
+        
+        <nav class="main-nav">
+            <button class="nav-btn" onclick="location.href='dashboard.html'">Dashboard</button>
+            <button class="nav-btn active" onclick="location.href='students.html'">Students</button>
+            <button class="nav-btn" onclick="location.href='attendance.html'">Attendance</button>
+        </nav>
+    </div>
+    
+    <!-- Add Student Modal -->
+    <div id="addStudentModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Student</h2>
+            
+            <form id="addStudentForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter student name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter email address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="class">Class</label>
+                    <input type="text" id="class" placeholder="e.g., 12A" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roll">Roll Number</label>
+                    <input type="text" id="roll" placeholder="e.g., 2024001" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="avatar">Avatar URL (Optional)</label>
+                    <input type="url" id="avatar" placeholder="Enter image URL">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Add Student</button>
+                    <button type="button" class="btn-secondary" onclick="hideAddStudentModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
