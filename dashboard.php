@@ -9,6 +9,14 @@ if (!isset($_SESSION['username'])) {
 require('./assets/config.php');
 $query = "SELECT * FROM users WHERE username='" . $_SESSION['username'] . "'";
 $result = mysqli_query($conn, $query);
+
+if(isset($_POST['submit'])) {
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -85,14 +93,12 @@ $result = mysqli_query($conn, $query);
             </ul>
         </div>
         
-        <nav class="main-nav">
-            <button class="nav-btn active" onclick="location.href='dashboard.html'">Dashboard</button>
-            <button class="nav-btn" onclick="location.href='students.html'">Students</button>
-            <button class="nav-btn" onclick="location.href='attendance.html'">Attendance</button>
-            <button class="nav-btn" onclick="location.href='login.php'">Logout</button>
-        </nav>
+        <?php
+        include('./assets/navbar.php');
+        ?>
+
     </div>
     
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>

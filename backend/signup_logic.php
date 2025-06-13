@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (preg_match("/\s/", $password)) {
         $passwordErr = "Password must not contain spaces";
     } else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = $password;
     }
 
     if (empty($nameErr) && empty($emailErr) && empty($usernameErr) && empty($passwordErr)) {
@@ -77,12 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_query($conn, $sql)) {
             session_start();
             $_SESSION['username'] = $username;
-            header("Location: ../dashboard.php");
+            header("Location: ./dashboard.php");
             exit();
         } else {
             session_start();
             $_SESSION['error'] = "Error: " . mysqli_error($conn);
-            header("Location: ../signup.php");
+            header("Location: ./signup.php");
             exit();
         }
     }
