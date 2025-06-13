@@ -500,3 +500,7 @@ header h1 {
     font-size: 14px;
     margin-top: 10px;
 }
+
+h1.troubleshooting{
+    color: red;
+}

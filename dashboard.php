@@ -1,13 +1,28 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: index.php?error=Please login to access the dashboard");
+    header("Location: login.php");
+    $_SESSION['error'] = "You must log in first.";
     exit();
 }
 
 require('./assets/config.php');
-$query = "SELECT * FROM users WHERE username='" . $_SESSION['username'] . "'";
+$query = "SELECT * FROM students ORDER BY id";
 $result = mysqli_query($conn, $query);
+
+$present_today = "SELECT * FROM attendances WHERE attendance_date = CURDATE() AND status = 'Present'";
+$present_result = mysqli_query($conn, $present_today);
+
+$absent_today = "SELECT * FROM attendances WHERE attendance_date = CURDATE() AND status = 'Absent'";
+$absent_result = mysqli_query($conn, $absent_today);
+
+if(isset($_POST['submit'])) {
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,70 +43,55 @@ $result = mysqli_query($conn, $query);
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Students</h3>
-                <p class="stat-number">3</p>
+                <p class="stat-number">
+                    <?php
+                    $total_students = mysqli_num_rows($result);
+                    echo $total_students;
+                    ?>
+                </p>
                 <p class="stat-desc">Enrolled this semester</p>
             </div>
             
             <div class="stat-card">
                 <h3>Present Today</h3>
-                <p class="stat-number">2</p>
-                <p class="stat-desc">67% attendance rate</p>
+                <p class="stat-number">
+                    <?php
+                    $present_today = mysqli_num_rows($present_result);
+                    echo $present_today;
+                    ?>
+                </p>
+                <p class="stat-desc">
+                    <?php
+                    if ($total_students > 0) {
+                        $attendance_rate = ($present_today / $total_students) * 100;
+                        echo number_format($attendance_rate, 2) . '%';
+                    } else {
+                        echo '0%';
+                    }
+                    echo ' attendance rate';
+                    ?>
+                </p>
             </div>
             
             <div class="stat-card">
                 <h3>Absent Today</h3>
-                <p class="stat-number">1</p>
+                <p class="stat-number">
+                    <?php
+                    $absent_today = $total_students - $present_today;
+                    echo $absent_today;
+                    ?>
+                </p>
                 <p class="stat-desc">Missing students</p>
             </div>
-            
-            <div class="stat-card">
-                <h3>Late Arrivals</h3>
-                <p class="stat-number">0</p>
-                <p class="stat-desc">Tardiness today</p>
-            </div>
         </div>
         
-        <div class="chart-container">
-            <h2>Weekly Attendance Trends</h2>
-            <div class="bar-chart">
-                <div class="bar" style="height: 28%;"><span>28</span></div>
-                <div class="bar" style="height: 21%;"><span>21</span></div>
-                <div class="bar" style="height: 14%;"><span>14</span></div>
-                <div class="bar" style="height: 7%;"><span>7</span></div>
-                <div class="bar" style="height: 0%;"><span>0</span></div>
-                <div class="x-axis">
-                    <span>Mon</span>
-                    <span>Tue</span>
-                    <span>Wed</span>
-                    <span>Thu</span>
-                    <span>Fri</span>
-                </div>
-            </div>
-        </div>
         
-        <div class="attendance-distribution">
-            <h2>Today's Attendance Distribution</h2>
-            <ul>
-                <li>Present: 67%</li>
-                <li>Late: 0%</li>
-            </ul>
-        </div>
-        
-        <div class="recent-activity">
-            <h2>Recent Activity</h2>
-            <ul>
-                <li>Absent: 33%</li>
-            </ul>
-        </div>
-        
-        <nav class="main-nav">
-            <button class="nav-btn active" onclick="location.href='dashboard.html'">Dashboard</button>
-            <button class="nav-btn" onclick="location.href='students.html'">Students</button>
-            <button class="nav-btn" onclick="location.href='attendance.html'">Attendance</button>
-            <button class="nav-btn" onclick="location.href='login.php'">Logout</button>
-        </nav>
+        <?php
+        include('./assets/navbar.php');
+        ?>
+
     </div>
     
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>

@@ -9,16 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add student form handling
-    const addStudentForm = document.getElementById('addStudentForm');
-    if (addStudentForm) {
-        addStudentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, you would send this data to a server
-            alert('Student added successfully!');
-            hideAddStudentModal();
-            // Refresh the student list or add the new student to the UI
-        });
-    }
+    // const addStudentForm = document.getElementById('addStudentForm');
+    // if (addStudentForm) {
+    //     addStudentForm.addEventListener('submit', function(e) {
+    //         e.preventDefault();
+    //         // In a real app, you would send this data to a server
+    //         alert('Student added successfully!');
+    //         hideAddStudentModal();
+    //         // Refresh the student list or add the new student to the UI
+    //     });
+    // }
     
     // Attendance status buttons
     document.querySelectorAll('.btn-present, .btn-absent, .btn-late').forEach(btn => {
